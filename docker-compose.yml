@@ -1,0 +1,36 @@
+version: '3.9'
+
+services:
+  client:
+    build: ./client
+    ports:
+      - '3000:3000'
+    depends_on:
+      - server
+
+  server:
+    build: ./server
+    ports:
+      - '8080:8080'
+    environment:
+      - DB_HOST=database
+      - DB_USER=admin
+      - DB_PASSWORD=securepass
+      - DB_NAME=chatdb
+    depends_on:
+      - database
+
+  database:
+    image: postgres:15
+    restart: always
+    environment:
+      - POSTGRES_DB=chatdb
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=securepass
+    ports:
+      - '5432:5432'
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+volumes:
+  pgdata:
