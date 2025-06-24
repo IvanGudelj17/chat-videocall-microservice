@@ -13,5 +13,5 @@ docker-compose up --build
 ### 1. Kloniraj repozitorij
 
 ```bash
-git clone https://github.com/<tvoje-korisnicko-ime>/golang-chat.git
+git clone https://github.com/IvanGudelj17/golang-chat.git
 cd golang-chat
